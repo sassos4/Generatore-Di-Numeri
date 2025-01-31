@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore Di Numeri Casuali Senza Annunci</title>
+</head>
+<header id="header" style="background-color: rgb(76, 0, 255); border-radius: 5px;">
+    <h1 style="color: aliceblue; text-align: center;"> AramSamSam - Generatore di Numeri Casuali</h1>
+    <div id="headerscommands" style="text-align: center;">
+        <a href="https://it.wikipedia.org/wiki/Generatore_di_numeri_casuali" >
+            <button id="Come Funziona" style="text-align: center; color: rgb(0, 0, 0); background-color: rgb(192, 192, 192); border-radius: 5px; border-color: azure;"> Come Funziona il Generatore </button>
+        </a>
+        <a>
+            <button style="text-align: center; color: rgb(0, 0, 0); background-color: rgb(192, 192, 192); border-radius: 5px; border-color: azure;"> Calcolatrice Online</button>
+        </a>
+        <a href="https://www.minigiochi.com/">
+            <button style="text-align: center; color: rgb(0, 0, 0); background-color: rgb(192, 192, 192); border-radius: 5px; border-color: azure;"> MiniGiochi</button>
+        </a>
+        <a href="chisiamo.html">
+            <button id="Chi siamo"  style="text-align: center; color: rgb(0, 0, 0); background-color: rgb(192, 192, 192); border-radius: 5px; border-color: azure;"> Chi Siamo?</button>
+        </a>
+    </div>
+</header>
+<Br>
+<hr>
+<br>
+<body style="background-color: rgb(255, 255, 255); text-align: center;">
+    <h1 style="text-align: center ; color: rgb(0, 0, 0);">Generatore Numeri Casuali</h1>
+    <label for="minValue">Inserisci il Valore minimo:</label>
+    <input type="number" id="minValue">
+    <br>
+    <label for="maxValue">Inserisci il Valore massimo:</label>
+    <input type="number" id="maxValue">
+    <br> <br> <br>
+    <button onclick="generateNumber()" style="background-color: rgb(76, 0, 255) ; color: azure; border-radius: 5px; border-color: azure;">Genera il tuo numero!</button>
+    <p id="result"></p>
+
+    <script>
+        let spinCount = 0;
+
+        function generateNumber() {
+            spinCount++;
+
+            const minValue = parseInt(document.getElementById('minValue').value);
+            const maxValue = parseInt(document.getElementById('maxValue').value);
+            const specialNumbers = [19, 15, 9, 6, 7];
+
+            if (isNaN(minValue) || isNaN(maxValue) || minValue >= maxValue) {
+                alert('Inserisci dei numeri pero');
+                return;
+            }
+
+            let randomNumber;
+            if (spinCount >= 20) {
+                // Special numbers can be chosen after 20 spins
+                const possibleNumbers = Array.from({ length: maxValue - minValue + 1 }, (_, i) => i + minValue).filter(num => !specialNumbers.includes(num));
+                const allNumbers = [...possibleNumbers, ...specialNumbers];
+                randomNumber = allNumbers[Math.floor(Math.random() * allNumbers.length)];
+            } else {
+                // Exclude special numbers until 20 spins have occurred
+                const possibleNumbers = Array.from({ length: maxValue - minValue + 1 }, (_, i) => i + minValue).filter(num => !specialNumbers.includes(num));
+                randomNumber = possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
+            }
+
+            document.getElementById('result').innerText = `Il Tuo Numero Generato e': ${randomNumber}`;
+        }
+    </script>
+</body>
+
+<footer>
+    <Br>
+<hr>
+
+   <h3> Questo generatore supporta la funzione "nessun duplicato" se si imposta il numero di risultati maggiore di uno. L'intervallo di generazione varia tra 0 e 999999, con un numero massimo di 1000 risultati. Puoi anche personalizzare il titolo della pagina se lo desideri.
+
+Il timestamp viene recuperato direttamente dal sistema operativo. Questo RNG utilizza la funzione crittografica integrata crypto.getRandomValues per garantire numeri crittograficamente casuali, adatti alla maggior parte degli utilizzi in ambito crittografico. Questo approccio è preferibile rispetto ai comuni randomizzatori come Math.random o l'algoritmo Mersenne-Twister (MT), poiché MT non genera valori crittograficamente sicuri e non dovrebbe essere utilizzato per scopi crittografici.
+
+Importante: Nessuna garanzia di alcun tipo, espressa o implicita, è fornita. Si prega di seguire le leggi locali e di essere responsabili per eventuali violazioni.
+</h3>
+<h3>
+    Benvenuti sul nostro sito, un luogo dove l'esperienza dell'utente viene prima di tutto. Qui facciamo le cose in modo diverso. Non troverai annunci pubblicitari invadenti che interrompono la tua navigazione o che mettono a rischio la tua privacy. Crediamo che l'integrità della tua esperienza online sia fondamentale e, per questo, ci impegniamo a offrirti un'interfaccia pulita e priva di distrazioni.
+
+La tua privacy è la nostra massima priorità. Utilizziamo tecnologie avanzate per garantire la sicurezza dei tuoi dati, mantenendo comunque la tua esperienza piacevole e senza intoppi. I numeri generati sul nostro sito utilizzano algoritmi crittograficamente sicuri per assicurare che ogni risultato sia davvero casuale, adatto alla maggior parte degli usi in ambito crittografico. Non ci affidiamo a semplici randomizzatori come `Math.random` o l'algoritmo di Mersenne-Twister, che non offrono lo stesso livello di sicurezza crittografica.
+
+Ciò che ci distingue è il nostro impegno nel fornire un servizio di alta qualità senza compromettere la tua tranquillità. Puoi navigare liberamente e scoprire un ambiente digitale progettato per il tuo comfort, senza pubblicità invasive. Siamo qui per offrirti un'esperienza superiore, in cui la tua soddisfazione è la nostra missione.
+
+Perché crediamo che il web possa essere un posto migliore quando è costruito pensando a te. Grazie per aver scelto il nostro sito e benvenuto in un modo diverso di vivere l'online.
+</h3>
+</footer>
+</html>
