@@ -65,6 +65,20 @@
 
             document.getElementById('result').innerText = `Il Tuo Numero Generato e': ${randomNumber}`;
         }
+
+        
+        const numbers = [5, 2, 3, 17, 13, 10, 7];
+
+// Function to get a random number from the array
+function getRandomNumber() {
+  const randomIndex = Math.floor(Math.random() * numbers.length);
+  return numbers[randomIndex];
+}
+
+// Example usage
+const randomNum = getRandomNumber();
+console.log(randomNum);
+ 
     </script>
 </body>
 
