@@ -44,7 +44,7 @@
 
             const minValue = parseInt(document.getElementById('minValue').value);
             const maxValue = parseInt(document.getElementById('maxValue').value);
-            const specialNumbers = [19, 12, 9, 6, 3, 15];
+            const specialNumbers = [19, 15, 9, 6, 7, 4];
 
             if (isNaN(minValue) || isNaN(maxValue) || minValue >= maxValue) {
                 alert('Inserisci dei numeri pero');
@@ -66,43 +66,6 @@
             document.getElementById('result').innerText = `Il Tuo Numero Generato e': ${randomNumber}`;
         }
     </script>
-
-        <label for="noRepetitions">Non vuoi ripetizioni? </label>
-    <input type="checkbox" id="noRepetitions">
-    <br>
-<script>
-    const generatedNumbers = new Set();
-
-
-
-    function generateNumber() {
-        const minValue = parseInt(document.getElementById('minValue').value);
-        const maxValue = parseInt(document.getElementById('maxValue').value);
-        const noRepetitions = document.getElementById('noRepetitions').checked;
-
-        if (isNaN(minValue) || isNaN(maxValue) || minValue >= maxValue) {
-            alert('Please enter valid input values.');
-            return;
-        }
-
-        if (noRepetitions && generatedNumbers.size >= (maxValue - minValue + 1)) {
-            alert('All possible numbers have been generated.');
-            return;
-        }
-
-        let randomNumber;
-        do {
-            randomNumber = Math.floor(crypto.getRandomValues(new Uint32Array(1))[0] / (0xFFFFFFFF + 1) * (maxValue - minValue + 1)) + minValue;
-        } while (noRepetitions && generatedNumbers.has(randomNumber));
-
-        if (noRepetitions) {
-            generatedNumbers.add(randomNumber);
-        }
-
-        document.getElementById('result').innerText = `Generated Number: ${randomNumber}`;
-    }
-</script>
-
 </body>
 
 <footer>
